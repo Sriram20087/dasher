@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 142 69% 58%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 142 76% 94%;
+    --accent-foreground: 142 69% 38%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 69% 58%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 142 69% 58%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 142 76% 94%;
+    --sidebar-accent-foreground: 142 69% 38%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 142 76% 58%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 69% 58%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 142 76% 24%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 69% 48%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 142 69% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 142 76% 24%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 142 69% 58%;
+  }
+
+  /* Map Styles */
+  .leaflet-popup-content-wrapper {
+    @apply rounded-lg shadow-lg border border-border bg-background p-0;
+  }
+
+  .leaflet-popup-content {
+    @apply m-0 !important;
+  }
+
+  .leaflet-popup-tip {
+    @apply bg-background border border-border;
+  }
+
+  .leaflet-popup-close-button {
+    @apply hover:bg-accent transition-colors rounded-full;
+  }
+
+  /* Marker pulse animation */
+  .map-marker-pulse {
+    @apply w-4 h-4 bg-primary rounded-full relative;
+    animation: map-marker-pulse 2s ease-out infinite;
+  }
+
+  @keyframes map-marker-pulse {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0.7);
+    }
+    
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px hsl(var(--primary) / 0);
+    }
+    
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 hsl(var(--primary) / 0);
+    }
+  }
+
+  /* Filter hover effects */
+  .checkbox-hover {
+    @apply transition-colors duration-200;
+  }
+
+  .checkbox-hover:hover {
+    @apply bg-primary/5;
+  }
+
+  /* Loading spinner */
+  .map-loading-spinner {
+    @apply border-4 border-primary/30 border-t-primary rounded-full w-8 h-8;
+    animation: map-spinner 0.6s linear infinite;
+  }
+
+  @keyframes map-spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  html {
+    font-family: 'Manrope', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-md hover:translate-y-[-2px];
+  }
+  
+  .food-tag {
+    @apply text-xs rounded-full px-2 py-1 font-medium;
+  }
+  
+  .expires-soon {
+    @apply bg-food-amber/20 text-food-amber;
+  }
+  
+  .fresh {
+    @apply bg-food-green/20 text-food-green;
+  }
+  
+  .expired {
+    @apply bg-food-red/20 text-food-red;
+  }
+  
+  .map-marker {
+    @apply w-6 h-6 rounded-full bg-primary flex items-center justify-center text-white;
+  }
+  
+  .map-marker-pulse {
+    @apply w-6 h-6 rounded-full bg-primary/70 relative;
+  }
+  
+  .map-marker-pulse::after {
+    content: '';
+    @apply absolute inset-0 rounded-full bg-primary animate-ping-slow;
+  }
+}
