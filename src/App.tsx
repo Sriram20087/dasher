@@ -3,20 +3,19 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useEffect } from "react";
-import NotFound from "./pages/NotFound";
-import { UserProvider } from "./contexts/UserContext";
-import { NotificationProvider } from "./contexts/NotificationContext";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import MainApp from "./MainApp";
-import Dashboard from "./pages/Dashboard";
-import AvailableFood from "./pages/AvailableFood";
-import Activity from "./pages/Activity";
-import Settings from "./pages/Settings";
-import LandingPage from "./pages/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import MapViewPage from "./pages/MapViewPage";
-import { initializeDemoData } from "./utils/storage";
+import { UserProvider } from "../contexts/UserContext";
+import { NotificationProvider } from "../contexts/NotificationContext";
+import { ThemeProvider } from "../contexts/ThemeContext";
+import MainApp from "../MainApp";
+import Dashboard from "./Dashboard";
+import AvailableFood from "./AvailableFood";
+import Activity from "./Activity";
+import Settings from "./Settings";
+import LandingPage from "./LandingPage";
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
+import MapViewPage from "./MapViewPage";
+import { initializeDemoData } from "../utils/storage";
 
 const queryClient = new QueryClient();
 
@@ -48,7 +47,6 @@ const App = () => {
                 <Route path="/landing" element={<LandingPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignupPage />} />
-                <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
           </NotificationProvider>
@@ -59,3 +57,4 @@ const App = () => {
 };
 
 export default App;
+
